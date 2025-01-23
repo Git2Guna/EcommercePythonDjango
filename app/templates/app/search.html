@@ -1,0 +1,17 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block title %}Search{% endblock title %}
+{% block main-content %}
+<center>
+{% if searched %}
+    <h1>You searched for {{searched}}</h1>
+    <br>
+    {% for pro in product %}
+    <a href="{% url "product-detail" pro.id %}">
+        <img src="{{pro.product_image.url}}"<br><h1 style="text-decoration:none;">{{pro.title}}</h1></a>
+    {% endfor %}
+    {% else %}
+         <h1>You Forgot to Search.... {{searched}}</h1>
+{% endif %}    
+</center>
+{% endblock main-content %}
